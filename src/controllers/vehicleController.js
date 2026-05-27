@@ -8,6 +8,7 @@ export const createVehicle = async (
     const {
       plate,
       mileage,
+      nextServiceMileage,
 
       brand,
       model,
@@ -20,6 +21,7 @@ export const createVehicle = async (
       oilFilter,
       airFilter,
       fuelFilter,
+      cabinFilter,
 
       notes,
 
@@ -45,6 +47,11 @@ export const createVehicle = async (
 
           mileage:
             Number(mileage),
+          
+          nextServiceMileage:
+            nextServiceMileage
+              ? Number(nextServiceMileage)
+              : null,
 
           brand,
           model,
@@ -62,6 +69,9 @@ export const createVehicle = async (
 
           fuelFilter:
             fuelFilter || false,
+          
+          cabinFilter:
+            cabinFilter || false,
 
           notes,
 
@@ -154,6 +164,14 @@ export const searchVehicle =
                     `${req.body.serviceDate}T12:00:00`
                   )
                 : undefined,
+              nextServiceMileage:
+                req.body
+                  .nextServiceMileage
+                  ? Number(
+                      req.body
+                        .nextServiceMileage
+                    )
+                  : null,
           },
         })
 

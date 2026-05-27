@@ -32,8 +32,10 @@ model Vehicle {
   oilFilter Boolean @default(false)
   airFilter Boolean @default(false)
   fuelFilter Boolean @default(false)
+  cabinFilter Boolean @default(false)
 
   serviceDate DateTime @default(now())
+  nextServiceMileage Int?
 
   notes String?
 
